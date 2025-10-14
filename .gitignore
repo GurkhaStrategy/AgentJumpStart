@@ -1,0 +1,27 @@
+# Root ignores
+node_modules/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.DS_Store
+Thumbs.db
+
+# Build outputs
+app/dist/
+api/dist/
+
+# Local env & settings
+api/local.settings.json
+.env
+.env.*
+
+# SWA generated
+staticwebapp.config.json
+swa-cli.config.json
+
+# IDE/editor
+.vscode/
+.idea/
+*.swp

@@ -22,6 +22,6 @@ staticwebapp.config.json
 swa-cli.config.json
 
 # IDE/editor
-.vscode/
+
 .idea/
 *.swp

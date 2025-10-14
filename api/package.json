@@ -12,11 +12,18 @@
     "start": "func start",
     "dev": "npm run build -- --watch",
     "test": "vitest run --reporter=dot",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "lint": "eslint \"**/*.ts\" --ignore-path ../.eslintignore",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "@azure/functions": "^4.5.0",
     "@types/node": "^24.7.2",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.3",
     "rimraf": "^5.0.5",
     "typescript": "^5.6.3",
     "vitest": "^1.6.0"

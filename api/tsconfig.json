@@ -9,7 +9,7 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "types": ["node", "@azure/functions"]
+  "types": ["node", "@azure/functions", "vitest"]
   },
   "include": ["**/*.ts"],
   "exclude": ["dist", "node_modules"]

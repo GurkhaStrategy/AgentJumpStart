@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node (20 from .nvmrc)
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: 'npm'
+
+      - name: Install API deps
+        working-directory: api
+        run: npm ci
+
+      - name: Install Frontend deps
+        working-directory: app
+        run: npm ci
+
+      - name: Lint API
+        working-directory: api
+        run: npx eslint "**/*.ts"
+
+      - name: Lint Frontend
+        working-directory: app
+        run: npx eslint "src/**/*.{ts,tsx}"
+
+      - name: Test API
+        working-directory: api
+        run: npm test
+
+      - name: Build Frontend
+        working-directory: app
+        run: npm run build
+
+      # Placeholder: SWA deploy (will be added after repo remote + secrets)
+      # - name: Deploy SWA
+      #   if: github.ref == 'refs/heads/main'
+      #   run: echo "Add swa deploy or official SWA action here" 

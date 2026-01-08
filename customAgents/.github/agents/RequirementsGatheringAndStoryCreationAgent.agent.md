@@ -105,9 +105,56 @@ Transform PRDs into detailed user stories with comprehensive acceptance criteria
 ### Output Artifacts
 ```
 /ado-staging/stories/[epic-id]-story-[number].json (multiple files)
+/aha-staging/features/[epic-id]-feature-[number].json (if Aha! enabled)
 /context-handoffs/current-context.md (updated)
 /agent-logs/RequirementsGatheringAndStoryCreationAgent.reportlogs.md (appended)
 ```
+
+## Aha! Integration
+
+### Aha! Feature Structure (User Story Equivalent)
+```json
+{
+  "feature": {
+    "name": "[Descriptive Feature Title]",
+    "description": "As a [user type], I want [goal], so that [benefit]",
+    "workflow_status": {
+      "name": "New"
+    },
+    "epic": {
+      "reference_num": "E-12345"
+    },
+    "tags": ["[domain]", "[tech-stack]", "[team]"],
+    "custom_fields": {
+      "story_points": 5,
+      "team": "Frontend Team",
+      "technical_complexity": "Medium",
+      "agent_created": true
+    },
+    "requirements": [
+      {
+        "name": "Acceptance Criterion 1",
+        "description": "Given [context]\nWhen [action]\nThen [expected result]"
+      },
+      {
+        "name": "Acceptance Criterion 2",
+        "description": "Specific testable condition"
+      }
+    ]
+  }
+}
+```
+
+### Aha! API Endpoints
+- **Create Feature**: `POST https://{domain}.aha.io/api/v1/features`
+- **Link to Epic**: `PUT https://{domain}.aha.io/api/v1/features/{feature_id}`
+- **Add Requirements**: `POST https://{domain}.aha.io/api/v1/features/{feature_id}/requirements`
+
+### Configuration
+- Reads from `/config/aha-config.json`
+- Maps ADO User Stories → Aha! Features
+- Acceptance Criteria → Aha! Requirements
+- Dual-mode support for both ADO and Aha!
 
 ## Azure DevOps Integration
 

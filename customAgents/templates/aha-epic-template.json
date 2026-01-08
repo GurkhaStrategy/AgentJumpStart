@@ -1,0 +1,31 @@
+{
+  "epic": {
+    "name": "[EPIC_NAME]",
+    "description": "[DETAILED_DESCRIPTION_WITH_BUSINESS_VALUE]",
+    "workflow_status": {
+      "name": "New"
+    },
+    "tags": [
+      "[domain-tag]",
+      "[priority-tag]",
+      "product-management"
+    ],
+    "custom_fields": {
+      "agent_created": true,
+      "technical_complexity": "[Low|Medium|High|Very High]"
+    },
+    "attachments": [
+      {
+        "file_url": "[URL_TO_PRD_OR_DOCUMENTATION]",
+        "description": "Product Requirements Document"
+      }
+    ]
+  },
+  "_metadata": {
+    "createdBy": "ProductManagerAgent",
+    "createdAt": "[TIMESTAMP]",
+    "prdReference": "/products/prds/[prd-filename].md",
+    "adoEpicId": "[ADO-EPIC-ID]",
+    "ahaId": null
+  }
+}

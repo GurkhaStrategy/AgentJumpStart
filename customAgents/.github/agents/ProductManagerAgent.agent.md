@@ -79,9 +79,46 @@ Create comprehensive Product Requirements Documents (PRDs), monthly roadmaps, an
 /products/prds/[feature-name]-prd.md
 /products/roadmaps/[YYYY-MM]-roadmap.md
 /ado-staging/epics/[epic-name].json
+/aha-staging/epics/[epic-name].json (if Aha! enabled)
 /context-handoffs/current-context.md (updated)
 /agent-logs/ProductManagerAgent.reportlogs.md (appended)
 ```
+
+## Aha! Integration
+
+### Aha! Epic Structure
+```json
+{
+  "epic": {
+    "name": "[Descriptive Epic Title]",
+    "description": "[Detailed description with business value]",
+    "workflow_status": {
+      "name": "New"
+    },
+    "tags": ["product-management", "[domain-tags]"],
+    "custom_fields": {
+      "agent_created": true,
+      "technical_complexity": "Medium"
+    },
+    "attachments": [
+      {
+        "file_url": "[link-to-prd]",
+        "description": "Product Requirements Document"
+      }
+    ]
+  }
+}
+```
+
+### Aha! API Endpoints
+- **Create Epic**: `POST https://{domain}.aha.io/api/v1/epics`
+- **Update Epic**: `PUT https://{domain}.aha.io/api/v1/epics/{epic_id}`
+- **Get Epic**: `GET https://{domain}.aha.io/api/v1/epics/{epic_id}`
+
+### Configuration
+- Reads from `/config/aha-config.json`
+- Requires API token with write permissions
+- Supports dual-mode: Create in both ADO and Aha! simultaneously
 
 ## Azure DevOps Integration
 
@@ -139,7 +176,8 @@ Examples:
 - /ado-staging/epics/epic-auth-001.json (created)
 
 **Work Items Created:**
-- Epic: User Authentication System (AUTH-001)
+- ADO Epic: User Authentication System (AUTH-001)
+- Aha! Epic: User Authentication System (E-12345) [if enabled]
 
 **Next Agent:** RequirementsGatheringAndStoryCreationAgent
 

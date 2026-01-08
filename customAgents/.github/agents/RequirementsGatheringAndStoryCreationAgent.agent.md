@@ -60,9 +60,9 @@ Transform PRDs into detailed user stories with comprehensive acceptance criteria
 
 ### Process Steps
 1. **Read Context**
-   - Load `/context-handoffs/current-context.md`
-   - Read PRD from `/products/prds/`
-   - Load Epic specifications from `/ado-staging/epics/`
+   - Load `AgentsAssets/context-handoffs/current-context.md`
+   - Read PRD from `AgentsArtifacts/products/prds/`
+   - Load Epic specifications from `AgentsAssets/ado-staging/epics/`
 
 2. **Analyze Codebase**
    - Scan affected modules and components
@@ -71,7 +71,7 @@ Transform PRDs into detailed user stories with comprehensive acceptance criteria
    - Assess technical complexity
 
 3. **Generate User Stories**
-   - Use `/templates/user-story-template.md`
+   - Use `AgentsAssets/templates/user-story-template.md`
    - Create 10-20 stories per Epic (typical)
    - Ensure stories follow INVEST principles:
      - **I**ndependent
@@ -92,22 +92,22 @@ Transform PRDs into detailed user stories with comprehensive acceptance criteria
    - Flag stories >13 points for potential splitting
 
 6. **Stage for Review**
-   - Output ADO-compliant JSON to `/ado-staging/stories/`
+   - Output ADO-compliant JSON to `AgentsAssets/ado-staging/stories/`
    - Link stories to Epic
    - Assign to appropriate team
    - Add relevant labels/tags
 
 7. **Update Context & Handoff**
-   - Update `/context-handoffs/current-context.md`
+   - Update `AgentsAssets/context-handoffs/current-context.md`
    - Commit: `[RequirementsAgent] Created [N] user stories for Epic [EPIC-ID]`
    - Wait for human review before triggering ScrumMasterAgent
 
 ### Output Artifacts
 ```
-/ado-staging/stories/[epic-id]-story-[number].json (multiple files)
-/aha-staging/features/[epic-id]-feature-[number].json (if Aha! enabled)
-/context-handoffs/current-context.md (updated)
-/agent-logs/RequirementsGatheringAndStoryCreationAgent.reportlogs.md (appended)
+AgentsAssets/ado-staging/stories/[epic-id]-story-[number].json (multiple files)
+AgentsAssets/aha-staging/features/[epic-id]-feature-[number].json (if Aha! enabled)
+AgentsAssets/context-handoffs/current-context.md (updated)
+AgentsAssets/agent-logs/RequirementsGatheringAndStoryCreationAgent.reportlogs.md (appended)
 ```
 
 ## Aha! Integration
@@ -151,7 +151,7 @@ Transform PRDs into detailed user stories with comprehensive acceptance criteria
 - **Add Requirements**: `POST https://{domain}.aha.io/api/v1/features/{feature_id}/requirements`
 
 ### Configuration
-- Reads from `/config/aha-config.json`
+- Reads from `AgentsAssets/config/aha-config.json`
 - Maps ADO User Stories → Aha! Features
 - Acceptance Criteria → Aha! Requirements
 - Dual-mode support for both ADO and Aha!
@@ -189,7 +189,7 @@ Transform PRDs into detailed user stories with comprehensive acceptance criteria
   "relations": {
     "parentEpic": "[EPIC-ID]",
     "dependencies": ["[STORY-ID-1]", "[STORY-ID-2]"],
-    "prdReference": "/products/prds/[filename].md"
+    "prdReference": "AgentsArtifacts/products/prds/[filename].md"
   },
   "complexity": {
     "storyPoints": 5,
@@ -258,8 +258,8 @@ Examples:
 ## [TIMESTAMP] - Action: User Story Generation
 
 **Files Modified:**
-- /ado-staging/stories/AUTH-001-story-*.json (12 files created)
-- /context-handoffs/current-context.md (updated)
+- AgentsAssets/ado-staging/stories/AUTH-001-story-*.json (12 files created)
+- AgentsAssets/context-handoffs/current-context.md (updated)
 
 **Work Items Created:**
 - 12 User Stories for Epic AUTH-001
@@ -281,7 +281,7 @@ Examples:
 ### Handoff Trigger
 - Automatic after all stories generated and staged
 - **Requires human approval** before proceeding to ScrumMasterAgent
-- Human reviews stories in `/ado-staging/stories/` and approves/modifies
+- Human reviews stories in `AgentsAssets/ado-staging/stories/` and approves/modifies
 
 ### Context Information Provided
 - Number of stories created
@@ -322,7 +322,7 @@ AGENT_VERSION=1.0.0
 ```
 
 ### ADO Configuration
-See `/config/ado-config.json` for Azure DevOps connection details
+See `AgentsAssets/config/ado-config.json` for Azure DevOps connection details
 
 ## Error Handling
 - If codebase scan fails: Proceed with PRD context, log warning

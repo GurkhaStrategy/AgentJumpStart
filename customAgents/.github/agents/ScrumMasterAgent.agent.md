@@ -43,14 +43,14 @@ Manage sprint planning, capacity allocation, daily standup updates, and retrospe
 ## Workflow
 
 ### Input Requirements
-- Approved user stories from `/ado-staging/stories/`
+- Approved user stories from `AgentsAssets/ado-staging/stories/`
 - Sprint name and dates
 - Team capacity information
 - Project context from handoff file
 
 ### Process Steps
 1. **Load Approved Stories**
-   - Read stories from `/ado-staging/stories/`
+   - Read stories from `AgentsAssets/ado-staging/stories/`
    - Verify human approval flag
    - Load story points and team assignments
 
@@ -66,7 +66,7 @@ Manage sprint planning, capacity allocation, daily standup updates, and retrospe
    - Balance workload to avoid over-commitment
 
 4. **Generate Sprint Plan**
-   - Use `/templates/sprint-plan-template.md`
+   - Use `AgentsAssets/templates/sprint-plan-template.md`
    - Document sprint goal
    - List all stories by team
    - Include capacity utilization
@@ -83,10 +83,10 @@ Manage sprint planning, capacity allocation, daily standup updates, and retrospe
 
 ### Output Artifacts
 ```
-/products/sprints/sprint-[number]-plan.md
-/ado-staging/stories/*.json (updated with sprint assignment)
-/context-handoffs/current-context.md (updated)
-/agent-logs/ScrumMasterAgent.reportlogs.md (appended)
+AgentsArtifacts/products/sprints/sprint-[number]-plan.md
+AgentsAssets/ado-staging/stories/*.json (updated with sprint assignment)
+AgentsAssets/context-handoffs/current-context.md (updated)
+AgentsAssets/agent-logs/ScrumMasterAgent.reportlogs.md (appended)
 ```
 
 ## Sprint Planning
@@ -123,7 +123,7 @@ Manage sprint planning, capacity allocation, daily standup updates, and retrospe
 
 ### Automated Report Generation
 - **Time**: 4:00 AM EST daily
-- **Format**: Markdown report in `/products/sprints/daily-updates/`
+- **Format**: Markdown report in `AgentsArtifacts/products/sprints/daily-updates/`
 - **Distribution**: Commit to repository for team visibility
 
 ### Report Contents
@@ -251,9 +251,9 @@ Examples:
 ## [TIMESTAMP] - Action: Sprint Planning
 
 **Files Modified:**
-- /products/sprints/sprint-2026-01-plan.md (created)
-- /ado-staging/stories/*.json (updated with sprint assignment)
-- /context-handoffs/current-context.md (updated)
+- AgentsArtifacts/products/sprints/sprint-2026-01-plan.md (created)
+- AgentsAssets/ado-staging/stories/*.json (updated with sprint assignment)
+- AgentsAssets/context-handoffs/current-context.md (updated)
 
 **Work Items Updated:**
 - 18 stories assigned to Sprint 2026-01
@@ -300,7 +300,7 @@ POINTS_PER_PERSON_PER_DAY=6
 ```
 
 ### ADO Configuration
-See `/config/ado-config.json` for Azure DevOps connection details
+See `AgentsAssets/config/ado-config.json` for Azure DevOps connection details
 
 ## Error Handling
 - If capacity calculation fails: Use defaults, log warning

@@ -52,22 +52,22 @@ Specialized utility agent that handles all Aha! API operations including creatin
 
 ### Standalone Invocation
 ```
-@AhaIntegrationAgent Create epic in Aha! from staging file: /aha-staging/epics/auth-001.json
+@AhaIntegrationAgent Create epic in Aha! from staging file: AgentsAssets/aha-staging/epics/auth-001.json
 ```
 
 ### Automatic Invocation
 - Triggered by ProductManagerAgent after epic creation
 - Triggered by RequirementsAgent after story generation
-- Reads from staging directories: `/aha-staging/epics/` and `/aha-staging/features/`
+- Reads from staging directories: `AgentsAssets/aha-staging/epics/` and `AgentsAssets/aha-staging/features/`
 
 ### Process Steps
 1. **Load Configuration**
-   - Read `/config/aha-config.json`
+   - Read `AgentsAssets/config/aha-config.json`
    - Validate API token and domain
    - Check integration enabled flag
 
 2. **Read Staging Files**
-   - Load JSON specifications from `/aha-staging/`
+   - Load JSON specifications from `AgentsAssets/aha-staging/`
    - Parse work item structure
    - Validate required fields
 
@@ -98,10 +98,10 @@ Specialized utility agent that handles all Aha! API operations including creatin
 
 ### Output Artifacts
 ```
-/aha-staging/epics/[epic-name].json (updated with Aha! ID)
-/aha-staging/features/[feature-name].json (updated with Aha! ID)
-/agent-logs/AhaIntegrationAgent.reportlogs.md (appended)
-/context-handoffs/current-context.md (updated)
+AgentsAssets/aha-staging/epics/[epic-name].json (updated with Aha! ID)
+AgentsAssets/aha-staging/features/[feature-name].json (updated with Aha! ID)
+AgentsAssets/agent-logs/AhaIntegrationAgent.reportlogs.md (appended)
+AgentsAssets/context-handoffs/current-context.md (updated)
 ```
 
 ## Aha! API Reference
@@ -191,7 +191,7 @@ Authorization: Bearer {api_token}
 ## Configuration
 
 ### Aha! Config File Structure
-Location: `/config/aha-config.json`
+Location: `AgentsAssets/config/aha-config.json`
 
 ```json
 {
@@ -247,7 +247,7 @@ Location: `/config/aha-config.json`
   "error": "Invalid API token"
 }
 ```
-**Solution**: Verify API token in `/config/aha-config.json` has correct permissions
+**Solution**: Verify API token in `AgentsAssets/config/aha-config.json` has correct permissions
 
 #### Rate Limit Exceeded (429)
 ```json
@@ -310,8 +310,8 @@ Examples:
 - Total API Calls: 33
 
 **Files Modified:**
-- /aha-staging/epics/auth-001.json (added Aha! ID)
-- /aha-staging/features/auth-001-feature-*.json (8 files updated)
+- AgentsAssets/aha-staging/epics/auth-001.json (added Aha! ID)
+- AgentsAssets/aha-staging/features/auth-001-feature-*.json (8 files updated)
 
 **Errors:** None
 
@@ -348,7 +348,7 @@ lastSyncTimestamp: "2026-01-08T10:30:00Z"
 
 ### Bulk Operations
 ```
-@AhaIntegrationAgent Sync all pending work items from /aha-staging/ to Aha!
+@AhaIntegrationAgent Sync all pending work items from AgentsAssets/aha-staging/ to Aha!
 ```
 
 ### Status Updates
@@ -381,7 +381,7 @@ lastSyncTimestamp: "2026-01-08T10:30:00Z"
 - Verify parent-child relationships after creation
 
 ### Error Recovery
-- Store failed requests in separate directory: `/aha-staging/failed/`
+- Store failed requests in separate directory: `AgentsAssets/aha-staging/failed/`
 - Include full error context in logs
 - Provide retry command for failed batches
 - Alert on persistent failures (>3 retries)
@@ -444,7 +444,7 @@ Invoke-RestMethod -Uri "https://mycompany.aha.io/api/v1/epics" -Method POST -Bod
 
 ### Debug Mode
 ```
-@AhaIntegrationAgent [DEBUG] Create epic from /aha-staging/epics/auth-001.json
+@AhaIntegrationAgent [DEBUG] Create epic from AgentsAssets/aha-staging/epics/auth-001.json
 ```
 - Shows full API request/response
 - Validates JSON structure before sending

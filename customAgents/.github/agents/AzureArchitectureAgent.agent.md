@@ -63,11 +63,11 @@ Design Azure cloud architecture, generate Infrastructure as Code (Bicep), create
 ### Process Steps
 1. **Scan Existing Resources**
    - Query Azure Resource Graph for current resources
-   - Review `/architecture/` directory for existing designs
+   - Review `AgentsArtifacts/architecture/` directory for existing designs
    - Understand current infrastructure state
 
 2. **Design Architecture**
-   - Use `/templates/architecture-doc-template.md`
+   - Use `AgentsAssets/templates/architecture-doc-template.md`
    - Design based on requirements from user stories
    - Apply Azure Well-Architected Framework principles
    - Consider OpenTickets-specific patterns
@@ -90,7 +90,7 @@ Design Azure cloud architecture, generate Infrastructure as Code (Bicep), create
    - Report branch URL in logs
 
 6. **Generate ADR**
-   - Use `/templates/adr-template.md`
+   - Use `AgentsAssets/templates/adr-template.md`
    - Document key decisions made
    - Include rationale and alternatives considered
 
@@ -107,13 +107,13 @@ Design Azure cloud architecture, generate Infrastructure as Code (Bicep), create
 
 ### Output Artifacts
 ```
-/architecture/diagrams/[feature-name]-architecture.md (with Mermaid)
-/architecture/iac/[feature-name]/main.bicep
-/architecture/iac/[feature-name]/parameters.json
-/architecture/adrs/[NNNN]-[decision-title].md
-/ado-staging/tasks/[feature-name]-infrastructure-provisioning.json
-/context-handoffs/current-context.md (updated)
-/agent-logs/AzureArchitectureAgent.reportlogs.md (appended)
+AgentsArtifacts/architecture/diagrams/[feature-name]-architecture.md (with Mermaid)
+AgentsArtifacts/architecture/iac/[feature-name]/main.bicep
+AgentsArtifacts/architecture/iac/[feature-name]/parameters.json
+AgentsArtifacts/architecture/adrs/[NNNN]-[decision-title].md
+AgentsAssets/ado-staging/tasks/[feature-name]-infrastructure-provisioning.json
+AgentsAssets/context-handoffs/current-context.md (updated)
+AgentsAssets/agent-logs/AzureArchitectureAgent.reportlogs.md (appended)
 
 New Branch: feature/architecture-[feature-name]
 ```
@@ -299,9 +299,9 @@ graph TB
   "relations": {
     "parentEpic": "[EPIC-ID]",
     "relatedStories": ["[STORY-ID-1]", "[STORY-ID-2]"],
-    "bicepTemplates": "/architecture/iac/[feature-name]/main.bicep",
-    "architectureDiagram": "/architecture/diagrams/[feature-name]-architecture.md",
-    "adr": "/architecture/adrs/[NNNN]-[title].md"
+    "bicepTemplates": "AgentsArtifacts/architecture/iac/[feature-name]/main.bicep",
+    "architectureDiagram": "AgentsArtifacts/architecture/diagrams/[feature-name]-architecture.md",
+    "adr": "AgentsArtifacts/architecture/adrs/[NNNN]-[title].md"
   }
 }
 ```
@@ -342,10 +342,10 @@ https://github.com/[org]/[repo]/tree/feature/architecture-[feature-name]
 ## [TIMESTAMP] - Action: Architecture Design & IaC Generation
 
 **Files Modified:**
-- /architecture/diagrams/payment-processing-architecture.md (created)
-- /architecture/iac/payment-processing/main.bicep (created)
-- /architecture/adrs/0015-cosmos-db-for-tickets.md (created)
-- /ado-staging/tasks/payment-infra-provisioning.json (created)
+- AgentsArtifacts/architecture/diagrams/payment-processing-architecture.md (created)
+- AgentsArtifacts/architecture/iac/payment-processing/main.bicep (created)
+- AgentsArtifacts/architecture/adrs/0015-cosmos-db-for-tickets.md (created)
+- AgentsAssets/ado-staging/tasks/payment-infra-provisioning.json (created)
 
 **Work Items Created:**
 - Infrastructure Task: Provision Payment Processing Resources
@@ -414,7 +414,7 @@ AZURE_TENANT_ID=[Your Tenant ID]
 ```
 
 ### ADO Configuration
-See `/config/ado-config.json` for Azure DevOps connection details
+See `AgentsAssets/config/ado-config.json` for Azure DevOps connection details
 
 ## Error Handling
 - If Azure scan fails: Proceed with existing docs, log warning

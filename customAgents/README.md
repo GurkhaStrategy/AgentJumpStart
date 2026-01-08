@@ -26,6 +26,8 @@ This repository contains a collaborative multi-agent system that automates the s
 
 ## 🤖 The 8 Agents
 
+**Agent Files Location**: `.github/agents/*.agent.md` (LIVE files that VS Code Copilot reads)
+
 | # | Agent Name | Model | Purpose |
 |---|------------|-------|---------|
 | 1 | **ProductManagerAgent** | GPT-4o | Creates PRDs, roadmaps, and epics |
@@ -55,13 +57,13 @@ graph TD
 ```
 
 ###Workflow Steps
-1. **ProductManagerAgent** analyzes repo → creates PRD → generates roadmap → auto-creates Epic
-2. **RequirementsAgent** scans code → creates stories → estimates points → stages for review
-3. **Human reviews** stories in `/ado-staging/stories/` → approves
+1. **ProductManagerAgent** analyzes repo → creates PRD in `AgentsArtifacts/products/prds/` → generates roadmap → auto-creates Epic
+2. **RequirementsAgent** scans code → creates stories → estimates points → stages for review in `AgentsAssets/ado-staging/`
+3. **Human reviews** stories in `AgentsAssets/ado-staging/stories/` → approves
 4. **ScrumMasterAgent** assigns to sprint → balances capacity → triggers parallel agents
-5. **AzureArchitectureAgent** + **DevOpsAgent** work in parallel → create IaC + CI/CD
+5. **AzureArchitectureAgent** + **DevOpsAgent** work in parallel → create IaC in `AgentsArtifacts/architecture/iac/` + CI/CD
 6. **TestingQualityAgent** generates test plans → creates Playwright tests
-7. **DocumentationAgent** updates all docs → workflow complete
+7. **DocumentationAgent** updates all docs in `AgentsArtifacts/architecture/adrs/` → workflow complete
 
 ---
 
@@ -69,72 +71,61 @@ graph TD
 
 ```
 customAgents/
-├── AgentsAssets/                                  # ⭐ ALL AGENT FILES HERE
-│   ├── .github/
-│   │   └── agents/                                # 9 agent definitions
-│   │       ├── ProductManagerAgent.agent.md
-│   │       ├── RequirementsGatheringAndStoryCreationAgent.agent.md
-│   │       ├── ScrumMasterAgent.agent.md
-│   │       ├── AzureArchitectureAgent.agent.md
-│   │       ├── DevOpsAgent.agent.md
-│   │       ├── TestingQualityAgent.agent.md
-│   │       ├── DocumentationMaintainerAgent.agent.md
-│   │       ├── AhaIntegrationAgent.agent.md
-│   │       └── OpenTicketsUiUXAgent.agent.md
-│   ├── agent-logs/                                # Summary logs for each agent
-│   │   └── ... (8 files)
-│   ├── ado-staging/                               # Azure DevOps work items (staged)
-│   │   ├── epics/
-│   │   ├── stories/
-│   │   ├── tasks/
-│   │   └── test-cases/
-│   ├── aha-staging/                               # Aha! work items (staged)
-│   │   ├── epics/
-│   │   ├── features/
-│   │   ├── requirements/
-│   │   └── releases/
-│   ├── config/                                    # Configuration files
-│   │   ├── ado-config.json                        # Azure DevOps config
-│   │   └── aha-config.json                        # Aha! API config
-│   ├── templates/                                 # Templates for all artifacts
-│   │   ├── prd-template.md
-│   │   ├── roadmap-template.md
-│   │   ├── epic-template.md
-│   │   ├── aha-epic-template.json
-│   │   ├── aha-feature-template.json
-│   │   └── aha-templates-readme.md
-│   ├── context-handoffs/                          # Cross-agent context sharing
-│   │   └── current-context.md
-│   └── README.md                                  # AgentsAssets documentation
-├── architecture/                                  # Architecture artifacts
-│   ├── diagrams/                                  # Mermaid diagrams
-│   ├── iac/                                       # Bicep/IaC code
-│   └── adrs/                                      # Architecture Decision Records
-├── context-handoffs/                              # Cross-agent context sharing
-│   ├── current-context.md                         # Active project context
-│   └── archive/                                   # Historical context files
-├── docs/                                          # Documentation
-│   ├── api/                                       # API docs (OpenAPI)
-│   ├── runbooks/                                  # Operational runbooks
-│   └── troubleshooting/                           # Troubleshooting guides
-├── pipelines/                                     # Generated CI/CD pipelines
-├── products/                                      # Product artifacts
-│   ├── prds/                                      # Product Requirements Documents
-│   ├── roadmaps/                                  # Monthly roadmaps
-│   └── sprints/                                   # Sprint plans
-├── templates/                                     # Templates for all artifacts
-│   ├── prd-template.md
-│   ├── roadmap-template.md
-│   ├── epic-template.md
-│   ├── user-story-template.md
-│   ├── sprint-plan-template.md
-│   ├── architecture-doc-template.md
-│   ├── test-plan-template.md
-│   ├── adr-template.md
-│   ├── aha-epic-template.json
-│   ├── aha-feature-template.json
-│   └── aha-templates-readme.md
+├── .github/
+│   └── agents/                                    # ⭐ 9 agent definitions (LIVE)
+│       ├── ProductManagerAgent.agent.md
+│       ├── RequirementsGatheringAndStoryCreationAgent.agent.md
+│       ├── ScrumMasterAgent.agent.md
+│       ├── AzureArchitectureAgent.agent.md
+│       ├── DevOpsAgent.agent.md
+│       ├── TestingQualityAgent.agent.md
+│       ├── DocumentationMaintainerAgent.agent.md
+│       ├── AhaIntegrationAgent.agent.md
+│       └── OpenTicketsUiUXAgent.agent.md
+├── AgentsAssets/                                  # 📦 Distribution package (self-contained)
+│   ├── .github/agents/                            # Agent definitions (copy)
+│   ├── agent-logs/                                # Log templates
+│   ├── ado-staging/                               # Azure DevOps staging structure
+│   ├── aha-staging/                               # Aha! staging structure
+│   ├── config/                                    # Config templates
+│   ├── templates/                                 # Work item templates
+│   ├── context-handoffs/                          # Context template
+│   └── README.md                                  # Setup guide
+├── AgentsArtifacts/                               # 📁 Agent-generated outputs
+│   ├── architecture/                              # Architecture artifacts
+│   │   ├── diagrams/                              # Mermaid diagrams
+│   │   ├── iac/                                   # Bicep/IaC code
+│   │   └── adrs/                                  # Architecture Decision Records
+│   └── products/                                  # Product artifacts
+│       ├── prds/                                  # Product Requirements Documents
+│       ├── roadmaps/                              # Monthly roadmaps
+│       └── sprints/                               # Sprint plans
+├── opentickets-homepage/                          # Sample homepage
+│   └── index.html
+├── SpecificationFiles/                            # Project specifications
+│   ├── AhaPlan.md
+│   ├── functions.md
+│   ├── OpenTicketsDashboardv2Plan.md
+│   └── ... (other specs)
 └── README.md                                      # This file
+```
+
+### Directory Purpose
+
+**Active Agent Files** (`.github/agents/`):
+- These are the **LIVE** agent definitions that VS Code Copilot reads
+- Edit these files to modify agent behavior
+- Changes take effect immediately
+
+**Distribution Package** (`AgentsAssets/`):
+- Self-contained package with all necessary files
+- Use this to set up the agent system in a new project
+- Contains templates, configs, and agent copies
+
+**Generated Outputs** (`AgentsArtifacts/`):
+- `architecture/` - IaC, diagrams, ADRs created by AzureArchitectureAgent
+- `products/` - PRDs, roadmaps created by ProductManagerAgent
+- This folder is created/populated when agents run
 ```
 
 ---
@@ -482,7 +473,7 @@ Write-Host "✅ Connected to project: $($response.value[0].name)"
 5. **Review generated artifacts**:
    ```powershell
    # View PRD
-   cat products\prds\user-authentication-prd.md
+   cat AgentsArtifacts\products\prds\user-authentication-prd.md
    
    # View Epic specification (ADO)
    cat AgentsAssets\ado-staging\epics\user-authentication-epic.json
@@ -514,7 +505,7 @@ echo "Test PRD content" > products\prds\test-feature-prd.md
 ## 📊 Review & Approval Workflow
 
 ### Step 1: ProductManager Creates PRD & Epic
-- **Location**: `products/prds/[feature-name]-prd.md`
+- **Location**: `AgentsArtifacts/products/prds/[feature-name]-prd.md`
 - **Action**: Review PRD for accuracy and completeness
 - **Epic**: Auto-created in `AgentsAssets/ado-staging/epics/` (and `AgentsAssets/aha-staging/epics/` if enabled)
 - **Aha! Sync**: Optionally invoke `@AhaIntegrationAgent` to create epic in Aha!
@@ -570,8 +561,8 @@ cat AgentsAssets\context-handoffs\current-context.md
 ### View Generated Artifacts
 ```powershell
 # PRDs and Roadmaps
-dir products\prds\
-dir products\roadmaps\
+dir AgentsArtifacts\products\prds\
+dir AgentsArtifacts\products\roadmaps\
 
 # Azure DevOps staged items
 dir AgentsAssets\ado-staging\epics\
@@ -584,8 +575,8 @@ dir AgentsAssets\aha-staging\features\
 dir AgentsAssets\aha-staging\requirements\
 
 # Architecture artifacts
-dir architecture\diagrams\
-dir architecture\iac\
+dir AgentsArtifacts\architecture\diagrams\
+dir AgentsArtifacts\architecture\iac\
 
 # Tests
 dir tests\e2e\
@@ -920,7 +911,7 @@ Invoke-RestMethod -Uri "https://yourcompany.aha.io/api/v1/products" -Headers $he
 4. Check rate limits (200 req/hour for Aha! API)
 
 ### Stories Not Generating
-1. Ensure PRD exists in `products/prds/`
+1. Ensure PRD exists in `AgentsArtifacts/products/prds/`
 2. Check context handoff file in `AgentsAssets/context-handoffs/`
 3. Review RequirementsAgent logs in `AgentsAssets/agent-logs/`
 

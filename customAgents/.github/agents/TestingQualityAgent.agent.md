@@ -59,12 +59,12 @@ Generate comprehensive test plans from user stories, create Playwright E2E test 
 
 ### Process Steps
 1. **Read User Stories**
-   - Load stories from `/ado-staging/stories/`
+   - Load stories from `AgentsAssets/ado-staging/stories/`
    - Parse acceptance criteria (Gherkin and bullet points)
    - Identify testable requirements
 
 2. **Generate Test Plan**
-   - Use `/templates/test-plan-template.md`
+   - Use `AgentsAssets/templates/test-plan-template.md`
    - Define test scope and strategy
    - Organize tests by priority
    - Identify test data requirements
@@ -85,7 +85,7 @@ Generate comprehensive test plans from user stories, create Playwright E2E test 
    - Generate ADO test case work items
    - Link to parent user stories
    - Organize into test suites
-   - Output to `/ado-staging/test-cases/`
+   - Output to `AgentsAssets/ado-staging/test-cases/`
 
 6. **Commit and Update Context**
    - Commit: `[TestingQualityAgent] Created test plan with [N] test cases`
@@ -97,9 +97,9 @@ Generate comprehensive test plans from user stories, create Playwright E2E test 
 /tests/test-plans/[feature-name]-test-plan.md
 /tests/e2e/[feature-name].spec.ts (Playwright tests)
 /tests/performance/[feature-name]-perf-spec.md
-/ado-staging/test-cases/[story-id]-test-*.json
-/context-handoffs/current-context.md (updated)
-/agent-logs/TestingQualityAgent.reportlogs.md (appended)
+AgentsAssets/ado-staging/test-cases/[story-id]-test-*.json
+AgentsAssets/context-handoffs/current-context.md (updated)
+AgentsAssets/agent-logs/TestingQualityAgent.reportlogs.md (appended)
 ```
 
 ## Test Plan Structure
@@ -439,10 +439,10 @@ Examples:
 ## [TIMESTAMP] - Action: Test Plan & Case Generation
 
 **Files Modified:**
-- /tests/test-plans/user-authentication-test-plan.md (created)
-- /tests/e2e/user-authentication.spec.ts (created)
-- /tests/performance/auth-perf-spec.md (created)
-- /ado-staging/test-cases/AUTH-*.json (12 files created)
+- tests/test-plans/user-authentication-test-plan.md (created)
+- tests/e2e/user-authentication.spec.ts (created)
+- tests/performance/auth-perf-spec.md (created)
+- AgentsAssets/ado-staging/test-cases/AUTH-*.json (12 files created)
 
 **Test Cases Created:**
 - 12 E2E test cases for Epic AUTH-001
@@ -494,7 +494,7 @@ PLAYWRIGHT_BROWSERS=chromium,firefox,webkit
 ```
 
 ### ADO Configuration
-See `/config/ado-config.json` for Azure DevOps connection details
+See `AgentsAssets/config/ado-config.json` for Azure DevOps connection details
 
 ## Error Handling
 - If test generation fails: Save test plan, log error

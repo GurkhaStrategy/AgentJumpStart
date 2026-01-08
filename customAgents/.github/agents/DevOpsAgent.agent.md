@@ -102,10 +102,10 @@ Create GitHub Actions workflows for CI/CD, configure deployments to Azure Static
 /.github/workflows/[feature-name]-ci-cd.yml
 /.github/workflows/pr-validation.yml
 /.github/workflows/deploy-production.yml
-/ado-staging/tasks/[feature-name]-deployment-setup.json
+AgentsAssets/ado-staging/tasks/[feature-name]-deployment-setup.json
 /docs/deployment-guide.md (updated)
-/context-handoffs/current-context.md (updated)
-/agent-logs/DevOpsAgent.reportlogs.md (appended)
+AgentsAssets/context-handoffs/current-context.md (updated)
+`AgentsAssets/agent-logs/DevOpsAgent.reportlogs.md` (appended)
 
 New Branch: feature/cicd-[feature-name]
 ```
@@ -447,10 +447,10 @@ https://github.com/[org]/[repo]/tree/feature/cicd-[feature-name]
 ## [TIMESTAMP] - Action: CI/CD Pipeline Creation
 
 **Files Modified:**
-- /.github/workflows/deploy-payment-service.yml (created)
-- /.github/workflows/pr-validation.yml (updated)
-- /staticwebapp.config.json (updated)
-- /ado-staging/tasks/payment-cicd-setup.json (created)
+- .github/workflows/deploy-payment-service.yml (created)
+- .github/workflows/pr-validation.yml (updated)
+- staticwebapp.config.json (updated)
+- AgentsAssets/ado-staging/tasks/payment-cicd-setup.json (created)
 
 **Work Items Created:**
 - Deployment Task: Configure CI/CD for Payment Service
@@ -528,7 +528,7 @@ GITHUB_REPO=[Your Repository Name]
 ```
 
 ### ADO Configuration
-See `/config/ado-config.json` for Azure DevOps connection details
+See `AgentsAssets/config/ado-config.json` for Azure DevOps connection details
 
 ## Error Handling
 - If workflow generation fails: Save partial config, log error

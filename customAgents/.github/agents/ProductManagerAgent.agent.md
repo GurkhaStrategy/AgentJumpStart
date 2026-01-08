@@ -16,17 +16,17 @@ Create comprehensive Product Requirements Documents (PRDs), monthly roadmaps, an
 1. **PRD Creation**
    - Analyze existing code and documentation in repository
    - Create detailed Product Requirements Documents
-   - Output: Markdown files in `/products/prds/`
+   - Output: Markdown files in `AgentsArtifacts/products/prds/`
    - Include problem statement, goals, success metrics, requirements, and constraints
 
 2. **Roadmap Planning**
    - Generate monthly roadmaps with feature prioritization
-   - Output: Separate markdown files in `/products/roadmaps/`
+   - Output: Separate markdown files in `AgentsArtifacts/products/roadmaps/`
    - Reference roadmap in corresponding PRD
 
 3. **Epic Generation**
    - Auto-create Epic work item specifications
-   - Output: ADO-compliant JSON in `/ado-staging/epics/`
+   - Output: ADO-compliant JSON in `AgentsAssets/ado-staging/epics/`
    - Link epics to PRD and roadmap
 
 4. **Market & Competitive Analysis**
@@ -50,17 +50,17 @@ Create comprehensive Product Requirements Documents (PRDs), monthly roadmaps, an
 
 ### Process Steps
 1. **Analyze Repository Context**
-   - Scan `/docs/`, `/architecture/`, and codebase
+   - Scan `docs/`, `AgentsArtifacts/architecture/`, and codebase
    - Understand current product capabilities
    - Identify technical constraints
 
 2. **Create PRD**
-   - Use `/templates/prd-template.md`
+   - Use `AgentsAssets/templates/prd-template.md`
    - Document problem, solution, requirements
    - Define success criteria
 
 3. **Generate Roadmap**
-   - Use `/templates/roadmap-template.md`
+   - Use `AgentsAssets/templates/roadmap-template.md`
    - Monthly timeline with milestones
    - Feature prioritization (RICE or custom framework)
 
@@ -70,18 +70,18 @@ Create comprehensive Product Requirements Documents (PRDs), monthly roadmaps, an
    - Add appropriate labels and metadata
 
 5. **Update Context & Handoff**
-   - Update `/context-handoffs/current-context.md`
+   - Update `AgentsAssets/context-handoffs/current-context.md`
    - Commit with format: `[ProductManagerAgent] Created PRD for [Feature Name]`
    - Auto-trigger RequirementsGatheringAndStoryCreationAgent
 
 ### Output Artifacts
 ```
-/products/prds/[feature-name]-prd.md
-/products/roadmaps/[YYYY-MM]-roadmap.md
-/ado-staging/epics/[epic-name].json
-/aha-staging/epics/[epic-name].json (if Aha! enabled)
-/context-handoffs/current-context.md (updated)
-/agent-logs/ProductManagerAgent.reportlogs.md (appended)
+AgentsArtifacts/products/prds/[feature-name]-prd.md
+AgentsArtifacts/products/roadmaps/[YYYY-MM]-roadmap.md
+AgentsAssets/ado-staging/epics/[epic-name].json
+AgentsAssets/aha-staging/epics/[epic-name].json (if Aha! enabled)
+AgentsAssets/context-handoffs/current-context.md (updated)
+AgentsAssets/agent-logs/ProductManagerAgent.reportlogs.md (appended)
 ```
 
 ## Aha! Integration
@@ -116,7 +116,7 @@ Create comprehensive Product Requirements Documents (PRDs), monthly roadmaps, an
 - **Get Epic**: `GET https://{domain}.aha.io/api/v1/epics/{epic_id}`
 
 ### Configuration
-- Reads from `/config/aha-config.json`
+- Reads from `AgentsAssets/config/aha-config.json`
 - Requires API token with write permissions
 - Supports dual-mode: Create in both ADO and Aha! simultaneously
 
@@ -136,8 +136,8 @@ Create comprehensive Product Requirements Documents (PRDs), monthly roadmaps, an
     "System.Tags": "product-management; [domain-tags]"
   },
   "relations": {
-    "prdReference": "/products/prds/[filename].md",
-    "roadmapReference": "/products/roadmaps/[filename].md"
+    "prdReference": "AgentsArtifacts/products/prds/[filename].md",
+    "roadmapReference": "AgentsArtifacts/products/roadmaps/[filename].md"
   }
 }
 ```
@@ -171,9 +171,9 @@ Examples:
 ## [TIMESTAMP] - Action: [Action Name]
 
 **Files Modified:**
-- /products/prds/feature-name-prd.md (created)
-- /products/roadmaps/2026-01-roadmap.md (created)
-- /ado-staging/epics/epic-auth-001.json (created)
+- AgentsArtifacts/products/prds/feature-name-prd.md (created)
+- AgentsArtifacts/products/roadmaps/2026-01-roadmap.md (created)
+- AgentsAssets/ado-staging/epics/epic-auth-001.json (created)
 
 **Work Items Created:**
 - ADO Epic: User Authentication System (AUTH-001)
@@ -188,7 +188,7 @@ Examples:
 
 ### Handoff Trigger
 - Automatic when PRD, roadmap, and epic specifications are complete
-- Updates `/context-handoffs/current-context.md` with project-level context
+- Updates `AgentsAssets/context-handoffs/current-context.md` with project-level context
 
 ### Context Information Provided
 - PRD location and summary
@@ -226,7 +226,7 @@ AGENT_VERSION=1.0.0
 ```
 
 ### ADO Configuration
-See `/config/ado-config.json` for Azure DevOps connection details
+See `AgentsAssets/config/ado-config.json` for Azure DevOps connection details
 
 ## Error Handling
 - If repository scan fails: Log error, proceed with provided context

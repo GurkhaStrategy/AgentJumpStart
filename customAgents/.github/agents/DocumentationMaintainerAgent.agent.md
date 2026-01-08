@@ -96,11 +96,11 @@ Maintain comprehensive documentation across the codebase including README files,
 /README.md (updated)
 /docs/api/openapi.yaml (updated)
 /docs/api/endpoints/[endpoint-name].md (created/updated)
-/architecture/adrs/[NNNN]-[title].md (created)
+AgentsArtifacts/architecture/adrs/[NNNN]-[title].md (created)
 /docs/runbooks/[runbook-name].md (created/updated)
 /docs/troubleshooting/[guide-name].md (created/updated)
 /docs/CHANGELOG.md (updated)
-/agent-logs/DocumentationMaintainerAgent.reportlogs.md (appended)
+AgentsAssets/agent-logs/DocumentationMaintainerAgent.reportlogs.md (appended)
 ```
 
 ## Documentation Types
@@ -684,7 +684,7 @@ CHECK_BROKEN_LINKS=true
 ```
 
 ### ADO Configuration
-See `/config/ado-config.json` for Azure DevOps connection details
+See `AgentsAssets/config/ado-config.json` for Azure DevOps connection details
 
 ## Error Handling
 - If documentation update fails: Log error, create issue

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenTickets Analytics Dashboard - Executive Overview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url(''https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'');
+        
+        * { font-family: ''Inter'', -apple-system, BlinkMacSystemFont, ''Segoe UI'', sans-serif; }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 200vh;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+        }
+        
+        .glass-button {
+            background: rgba(0, 122, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 122, 255, 0.3);
+            box-shadow: 0 4px 16px rgba(0, 122, 255, 0.15);
+            color: #007AFF;
+        }
+        
+        .glass-button:hover {
+            background: rgba(0, 122, 255, 0.25);
+            border-color: rgba(0, 122, 255, 0.5);
+            box-shadow: 0 6px 24px rgba(0, 122, 255, 0.25);
+        }
+        
+        .glass-button-secondary {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 229, 234, 0.6);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        }
+        
+        .glass-button-secondary:hover {
+            background: rgba(255, 255, 255, 0.6);
+            border-color: rgba(209, 209, 214, 0.8);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 229, 234, 0.5);
+        }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .glass-badge {
+            background: rgba(52, 199, 89, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(52, 199, 89, 0.3);
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        }
+        
+        .metric-highlight {
+            background: rgba(0, 122, 255, 0.1);
+            border-left: 3px solid rgba(0, 122, 255, 0.6);
+        }
+    </style>
+</head>
+<body class="min-h-screen p-6">
+    <nav class="glass-nav fixed top-0 left-0 right-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="text-2xl font-bold text-white">OpenTickets</div>
+                <span class="text-xs text-white/70 font-medium">Analytics Platform</span>
+            </div>
+            <div class="flex items-center gap-8">
+                <a href="#overview" class="text-sm font-medium text-white/90 hover:text-white transition-colors">Overview</a>
+                <a href="#features" class="text-sm font-medium text-white/90 hover:text-white transition-colors">Features</a>
+                <a href="#metrics" class="text-sm font-medium text-white/90 hover:text-white transition-colors">Metrics</a>
+                <button class="glass-button px-6 py-2 font-semibold rounded-lg transition-all duration-200 text-sm">Schedule Demo</button>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="max-w-7xl w-full mx-auto pt-24">
+        <div id="overview" class="glass-card rounded-3xl p-16 mb-8">
+            <div class="text-center mb-12">
+                <div class="inline-flex glass-badge px-5 py-2 rounded-full text-sm font-semibold text-green-700 mb-6">Enterprise-Ready Analytics Platform</div>
+                <h1 class="text-6xl font-bold tracking-tight text-gray-900 mb-6">OpenTickets Analytics</h1>
+                <p class="text-2xl text-gray-700 mb-4 leading-relaxed max-w-3xl mx-auto font-light">Real-time Event Intelligence & Revenue Optimization</p>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">Enterprise-grade analytics platform delivering actionable insights for event organizers, with integrated Stripe routing audit and comprehensive financial tracking.</p>
+                
+                <div class="flex gap-6 justify-center mb-16 mt-12">
+                    <button class="glass-button px-10 py-4 font-semibold rounded-xl transition-all duration-200 text-base">Request Full Presentation</button>
+                    <button class="glass-button-secondary px-10 py-4 text-gray-800 font-semibold rounded-xl transition-all duration-200 text-base">View Live Demo</button>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-gray-900 mb-2">40%</div>
+                        <div class="text-sm text-gray-600 font-medium">Average Time Saved</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-gray-900 mb-2">$2.4M+</div>
+                        <div class="text-sm text-gray-600 font-medium">Revenue Tracked Monthly</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-gray-900 mb-2">99.9%</div>
+                        <div class="text-sm text-gray-600 font-medium">Uptime SLA</div>
+                    </div>
+                </div>
+                
+                <div class="section-divider my-12"></div>
+                <h3 class="text-2xl font-semibold text-gray-900 mb-6 text-center">Live Platform Performance</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="stat-card rounded-2xl p-8 text-left metric-highlight">
+                        <div class="text-xs font-bold text-gray-600 uppercase tracking-wider mb-3">Total Revenue (YTD)</div>
+                        <div class="text-5xl font-bold text-gray-900 mb-2">$248,592</div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-base text-green-600 font-semibold"> 12.5%</span>
+                            <span class="text-sm text-gray-600">vs Q4 2025</span>
+                        </div>
+                    </div>
+                    <div class="stat-card rounded-2xl p-8 text-left">
+                        <div class="text-xs font-bold text-gray-600 uppercase tracking-wider mb-3">Tickets Processed</div>
+                        <div class="text-5xl font-bold text-gray-900 mb-2">8,432</div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-base text-green-600 font-semibold"> 8.3%</span>
+                            <span class="text-sm text-gray-600">MoM Growth</span>
+                        </div>
+                    </div>
+                    <div class="stat-card rounded-2xl p-8 text-left">
+                        <div class="text-xs font-bold text-gray-600 uppercase tracking-wider mb-3">Redemption Rate</div>
+                        <div class="text-5xl font-bold text-gray-900 mb-2">94.2%</div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-base text-green-600 font-semibold"> 2.1%</span>
+                            <span class="text-sm text-gray-600">Industry Leading</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="features" class="glass-card rounded-3xl p-12 mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4 text-center">Enterprise Capabilities</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Comprehensive analytics suite designed for large-scale event operations</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="stat-card rounded-2xl p-8">
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Real-Time Intelligence</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-3">Live monitoring of all event metrics with sub-second latency and automated anomaly detection.</p>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li> Multi-event tour tracking</li>
+                                <li> Custom KPI dashboards</li>
+                                <li> Predictive analytics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card rounded-2xl p-8">
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Stripe Financial Audit</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-3">Complete payment routing visibility with payout tracking and reconciliation.</p>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li> Platform vs. connected routing</li>
+                                <li> Bank deposit tracking</li>
+                                <li> Automated fee reconciliation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="metrics" class="glass-card rounded-3xl p-12 mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4 text-center">Return on Investment</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Measurable impact within 90 days of implementation</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="stat-card rounded-2xl p-8">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-6">Time Savings</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600">Manual reporting</span>
+                            <span class="text-sm font-semibold text-gray-900">-12 hrs/week</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600">Data reconciliation</span>
+                            <span class="text-sm font-semibold text-gray-900">-8 hrs/week</span>
+                        </div>
+                        <div class="section-divider my-4"></div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-base font-semibold text-gray-900">Weekly savings</span>
+                            <span class="text-xl font-bold text-green-600">35 hours</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card rounded-2xl p-8">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-6">Revenue Impact</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600">Reduced refund rate</span>
+                            <span class="text-sm font-semibold text-gray-900">-2.3%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600">Improved redemption</span>
+                            <span class="text-sm font-semibold text-gray-900">+5.8%</span>
+                        </div>
+                        <div class="section-divider my-4"></div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-base font-semibold text-gray-900">Annual impact</span>
+                            <span class="text-xl font-bold text-green-600">$120K+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="glass-card rounded-3xl p-12 mb-8 text-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Schedule Executive Briefing</h2>
+            <p class="text-gray-600 mb-8 max-w-2xl mx-auto">Request a personalized demonstration and ROI analysis tailored to your organization.</p>
+            <div class="flex gap-6 justify-center">
+                <button class="glass-button px-10 py-4 font-semibold rounded-xl transition-all duration-200">Contact Sales Team</button>
+                <button class="glass-button-secondary px-10 py-4 text-gray-800 font-semibold rounded-xl transition-all duration-200">Download White Paper</button>
+            </div>
+            <p class="text-sm text-gray-500 mt-6">Response time: Within 4 business hours</p>
+        </div>
+        
+        <div class="text-center pb-12">
+            <div class="text-xs text-white/60 font-medium mb-2">Enterprise-Grade Infrastructure</div>
+            <p class="text-sm text-white/80 font-medium">React 18  TypeScript  Azure Cloud  SOC 2 Certified</p>
+        </div>
+    </div>
+</body>
+</html>

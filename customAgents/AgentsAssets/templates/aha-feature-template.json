@@ -1,0 +1,47 @@
+{
+  "feature": {
+    "name": "[FEATURE_NAME]",
+    "description": "As a [USER_TYPE], I want [GOAL], so that [BENEFIT]",
+    "workflow_status": {
+      "name": "New"
+    },
+    "epic": {
+      "reference_num": "[E-12345]"
+    },
+    "tags": [
+      "[team-tag]",
+      "[tech-stack-tag]",
+      "[domain-tag]"
+    ],
+    "custom_fields": {
+      "story_points": 0,
+      "team": "[Frontend Team|Backend Team|Infrastructure Team|Business Team]",
+      "technical_complexity": "[Low|Medium|High|Very High]",
+      "agent_created": true
+    }
+  },
+  "requirements": [
+    {
+      "name": "[ACCEPTANCE_CRITERION_1]",
+      "description": "Given [CONTEXT]\nWhen [ACTION]\nThen [EXPECTED_RESULT]",
+      "workflow_status": {
+        "name": "New"
+      }
+    },
+    {
+      "name": "[ACCEPTANCE_CRITERION_2]",
+      "description": "[SPECIFIC_TESTABLE_CONDITION]",
+      "workflow_status": {
+        "name": "New"
+      }
+    }
+  ],
+  "_metadata": {
+    "createdBy": "RequirementsGatheringAndStoryCreationAgent",
+    "createdAt": "[TIMESTAMP]",
+    "epicReference": "/aha-staging/epics/[epic-filename].json",
+    "adoStoryId": "[ADO-STORY-ID]",
+    "ahaFeatureId": null,
+    "ahaRequirementIds": []
+  }
+}

@@ -69,35 +69,47 @@ graph TD
 
 ```
 customAgents/
-├── .github/
-│   └── agents/                                    # 7 agent definitions
-│       ├── ProductManagerAgent.agent.md
-│       ├── RequirementsGatheringAndStoryCreationAgent.agent.md
-│       ├── ScrumMasterAgent.agent.md
-│       ├── AzureArchitectureAgent.agent.md
-│       ├── DevOpsAgent.agent.md
-│       ├── TestingQualityAgent.agent.md
-│       └── DocumentationMaintainerAgent.agent.md
-├── agent-logs/                                    # Summary logs for each agent
-│   ├── ProductManagerAgent.reportlogs.md
-│   └── ... (8 files total)
-├── ado-staging/                                   # Azure DevOps work items (staged)
-│   ├── epics/                                     # Epic JSON specs
-│   ├── stories/                                   # User story JSON specs
-│   ├── tasks/                                     # Task JSON specs
-│   └── test-cases/                                # Test case JSON specs
-├── aha-staging/                                   # Aha! work items (staged)
-│   ├── epics/                                     # Aha! epic JSON specs
-│   ├── features/                                  # Aha! feature JSON specs (user stories)
-│   ├── requirements/                              # Aha! requirement JSON specs
-│   └── releases/                                  # Aha! release JSON specs
+├── AgentsAssets/                                  # ⭐ ALL AGENT FILES HERE
+│   ├── .github/
+│   │   └── agents/                                # 9 agent definitions
+│   │       ├── ProductManagerAgent.agent.md
+│   │       ├── RequirementsGatheringAndStoryCreationAgent.agent.md
+│   │       ├── ScrumMasterAgent.agent.md
+│   │       ├── AzureArchitectureAgent.agent.md
+│   │       ├── DevOpsAgent.agent.md
+│   │       ├── TestingQualityAgent.agent.md
+│   │       ├── DocumentationMaintainerAgent.agent.md
+│   │       ├── AhaIntegrationAgent.agent.md
+│   │       └── OpenTicketsUiUXAgent.agent.md
+│   ├── agent-logs/                                # Summary logs for each agent
+│   │   └── ... (8 files)
+│   ├── ado-staging/                               # Azure DevOps work items (staged)
+│   │   ├── epics/
+│   │   ├── stories/
+│   │   ├── tasks/
+│   │   └── test-cases/
+│   ├── aha-staging/                               # Aha! work items (staged)
+│   │   ├── epics/
+│   │   ├── features/
+│   │   ├── requirements/
+│   │   └── releases/
+│   ├── config/                                    # Configuration files
+│   │   ├── ado-config.json                        # Azure DevOps config
+│   │   └── aha-config.json                        # Aha! API config
+│   ├── templates/                                 # Templates for all artifacts
+│   │   ├── prd-template.md
+│   │   ├── roadmap-template.md
+│   │   ├── epic-template.md
+│   │   ├── aha-epic-template.json
+│   │   ├── aha-feature-template.json
+│   │   └── aha-templates-readme.md
+│   ├── context-handoffs/                          # Cross-agent context sharing
+│   │   └── current-context.md
+│   └── README.md                                  # AgentsAssets documentation
 ├── architecture/                                  # Architecture artifacts
 │   ├── diagrams/                                  # Mermaid diagrams
 │   ├── iac/                                       # Bicep/IaC code
 │   └── adrs/                                      # Architecture Decision Records
-├── config/
-│   ├── ado-config.json                            # Azure DevOps configuration (DUMMY KEYS)
-│   └── aha-config.json                            # Aha! API configuration (DUMMY KEYS)
 ├── context-handoffs/                              # Cross-agent context sharing
 │   ├── current-context.md                         # Active project context
 │   └── archive/                                   # Historical context files
@@ -131,7 +143,7 @@ customAgents/
 
 ### 1. Azure DevOps Setup
 
-Edit `/config/ado-config.json`:
+Edit `AgentsAssets/config/ado-config.json`:
 
 ```json
 {
@@ -153,7 +165,7 @@ Edit `/config/ado-config.json`:
 
 ### 2. Aha! Integration Setup
 
-Edit `/config/aha-config.json`:
+Edit `AgentsAssets/config/aha-config.json`:
 
 ```json
 {
@@ -265,7 +277,7 @@ dir
 
 ```powershell
 # Open config file
-notepad config\ado-config.json
+notepad AgentsAssets\config\ado-config.json
 ```
 
 **Replace these values:**
@@ -366,7 +378,7 @@ echo $GITHUB_TOKEN
 
 ```powershell
 # Open config file
-notepad config\aha-config.json
+notepad AgentsAssets\config\aha-config.json
 ```
 
 **Replace these values:**
@@ -424,10 +436,10 @@ npx playwright --version
 
 ```powershell
 # Check ADO configuration
-cat config\ado-config.json
+cat AgentsAssets\config\ado-config.json
 
 # Check Aha! configuration (if enabled)
-cat config\aha-config.json
+cat AgentsAssets\config\aha-config.json
 
 # Verify environment variable
 Write-Host "GitHub Token: $($env:GITHUB_TOKEN.Substring(0,10))..."
@@ -473,18 +485,18 @@ Write-Host "✅ Connected to project: $($response.value[0].name)"
    cat products\prds\user-authentication-prd.md
    
    # View Epic specification (ADO)
-   cat ado-staging\epics\user-authentication-epic.json
+   cat AgentsAssets\ado-staging\epics\user-authentication-epic.json
    
    # View Epic specification (Aha! - if enabled)
-   cat aha-staging\epics\user-authentication-epic.json
+   cat AgentsAssets\aha-staging\epics\user-authentication-epic.json
    
    # Check agent log
-   cat agent-logs\ProductManagerAgent.reportlogs.md
+   cat AgentsAssets\agent-logs\ProductManagerAgent.reportlogs.md
    ```
 
 6. **Optional: Invoke AhaIntegrationAgent** (if Aha! configured):
    ```
-   @AhaIntegrationAgent Sync epics from /aha-staging/epics/ to Aha!
+   @AhaIntegrationAgent Sync epics from AgentsAssets/aha-staging/epics/ to Aha!
    ```
 
 ### Option 2: Manual Workflow Test
@@ -504,11 +516,11 @@ echo "Test PRD content" > products\prds\test-feature-prd.md
 ### Step 1: ProductManager Creates PRD & Epic
 - **Location**: `products/prds/[feature-name]-prd.md`
 - **Action**: Review PRD for accuracy and completeness
-- **Epic**: Auto-created in `ado-staging/epics/` (and `aha-staging/epics/` if enabled)
+- **Epic**: Auto-created in `AgentsAssets/ado-staging/epics/` (and `AgentsAssets/aha-staging/epics/` if enabled)
 - **Aha! Sync**: Optionally invoke `@AhaIntegrationAgent` to create epic in Aha!
 
 ### Step 2: Requirements Agent Generates Stories
-- **Location**: `ado-staging/stories/[epic-id]-story-*.json` (and `aha-staging/features/` if enabled)
+- **Location**: `AgentsAssets/ado-staging/stories/[epic-id]-story-*.json` (and `AgentsAssets/aha-staging/features/` if enabled)
 - **Action**: Review user stories, acceptance criteria, and story point estimates
 - **Aha! Sync**: Optionally invoke `@AhaIntegrationAgent` to create features in Aha!
 - **Approval**: If approved, move to Step 3
@@ -516,13 +528,13 @@ echo "Test PRD content" > products\prds\test-feature-prd.md
 ### Step 3: Manual Approval for Sprint Planning
 ```powershell
 # Review stories
-dir ado-staging\stories\
+dir AgentsAssets\ado-staging\stories\
 
 # Open a story
-cat ado-staging\stories\AUTH-001-story-001.json
+cat AgentsAssets\ado-staging\stories\AUTH-001-story-001.json
 
 # If approved, create approval flag
-echo "APPROVED" > ado-staging\stories\.approved
+echo "APPROVED" > AgentsAssets\ado-staging\stories\.approved
 ```
 
 ### Step 4: Automated Workflow Continues
@@ -538,21 +550,21 @@ echo "APPROVED" > ado-staging\stories\.approved
 ### View Agent Logs
 ```powershell
 # View all agent activity
-Get-ChildItem agent-logs\*.md | ForEach-Object { 
+Get-ChildItem AgentsAssets\agent-logs\*.md | ForEach-Object { 
     Write-Host "`n=== $($_.Name) ===" -ForegroundColor Cyan
     Get-Content $_.FullName | Select-Object -Last 20
 }
 
 # View specific agent log
-cat agent-logs\ProductManagerAgent.reportlogs.md
+cat AgentsAssets\agent-logs\ProductManagerAgent.reportlogs.md
 
 # Monitor in real-time (PowerShell)
-Get-Content agent-logs\ProductManagerAgent.reportlogs.md -Wait -Tail 10
+Get-Content AgentsAssets\agent-logs\ProductManagerAgent.reportlogs.md -Wait -Tail 10
 ```
 
 ### Check Context Handoff Status
 ```powershell
-cat context-handoffs\current-context.md
+cat AgentsAssets\context-handoffs\current-context.md
 ```
 
 ### View Generated Artifacts
@@ -562,14 +574,14 @@ dir products\prds\
 dir products\roadmaps\
 
 # Azure DevOps staged items
-dir ado-staging\epics\
-dir ado-staging\stories\
-dir ado-staging\tasks\
+dir AgentsAssets\ado-staging\epics\
+dir AgentsAssets\ado-staging\stories\
+dir AgentsAssets\ado-staging\tasks\
 
 # Aha! staged items (if enabled)
-dir aha-staging\epics\
-dir aha-staging\features\
-dir aha-staging\requirements\
+dir AgentsAssets\aha-staging\epics\
+dir AgentsAssets\aha-staging\features\
+dir AgentsAssets\aha-staging\requirements\
 
 # Architecture artifacts
 dir architecture\diagrams\
@@ -607,7 +619,7 @@ $env:GITHUB_TOKEN="ghp_YOUR_TOKEN_HERE"
 
 ### Issue: "Cannot connect to Aha!"
 **Solutions:**
-1. Verify Aha! API token in `config/aha-config.json`
+1. Verify Aha! API token in `AgentsAssets/config/aha-config.json`
 2. Check your subdomain is correct (e.g., `yourcompany.aha.io`)
 3. Test connection manually:
    ```powershell
@@ -642,14 +654,15 @@ cat playwright.config.ts
 ## 📞 Getting Help
 
 ### Documentation
-- **Agent Definitions**: `.github/agents/*.agent.md`
-- **Templates**: `templates/*.md`
-- **Configuration**: `config/ado-config.json`
+- **AgentsAssets README**: `AgentsAssets/README.md` - Complete setup guide
+- **Agent Definitions**: `AgentsAssets/.github/agents/*.agent.md`
+- **Templates**: `AgentsAssets/templates/*.md`
+- **Configuration**: `AgentsAssets/config/*.json`
 
 ### Logs & Debugging
-- **Agent Logs**: `agent-logs/*.reportlogs.md`
+- **Agent Logs**: `AgentsAssets/agent-logs/*.reportlogs.md`
 - **Git History**: `git log --grep="\[AgentName\]"`
-- **Context Files**: `context-handoffs/current-context.md`
+- **Context Files**: `AgentsAssets/context-handoffs/current-context.md`
 
 ### Support Channels
 - **GitHub Issues**: [Create issue](https://github.com/GurkhaStrategy/AgentJumpStart/issues)
@@ -707,15 +720,15 @@ AgentJumpStart Setup Checklist
 [ ] 2. Install Node.js 20+ and npm
 [ ] 3. Install VS Code with GitHub Copilot
 [ ] 4. Create Azure DevOps PAT token
-[ ] 5. Update config/ado-config.json with credentials
+[ ] 5. Update AgentsAssets/config/ado-config.json with credentials
 [ ] 6. (Optional) Create Aha! API token
-[ ] 7. (Optional) Update config/aha-config.json with credentials
+[ ] 7. (Optional) Update AgentsAssets/config/aha-config.json with credentials
 [ ] 8. Create GitHub Personal Access Token
 [ ] 9. Set GITHUB_TOKEN environment variable
 [ ] 10. Run: npm install && npx playwright install
 [ ] 11. Test first agent execution
-[ ] 12. Review generated artifacts in ado-staging/ and aha-staging/
-[ ] 13. Verify logs are being created
+[ ] 12. Review generated artifacts in AgentsAssets/ado-staging/ and AgentsAssets/aha-staging/
+[ ] 13. Verify logs are being created in AgentsAssets/agent-logs/
 [ ] 14. Test approval workflow
 [ ] 15. (Optional) Test Aha! integration with @AhaIntegrationAgent
 
@@ -901,15 +914,15 @@ Invoke-RestMethod -Uri "https://yourcompany.aha.io/api/v1/products" -Headers $he
 4. Check AhaIntegrationAgent logs for detailed errors
 
 ### Work Items Not Syncing to Aha!
-1. Verify `integration.enabled: true` in `aha-config.json`
-2. Check staging files have `ahaId: null` (not yet synced)
+1. Verify `integration.enabled: true` in `AgentsAssets/config/aha-config.json`
+2. Check staging files in `AgentsAssets/aha-staging/` have `ahaId: null` (not yet synced)
 3. Manually invoke: `@AhaIntegrationAgent Sync all pending work items`
 4. Check rate limits (200 req/hour for Aha! API)
 
 ### Stories Not Generating
-1. Ensure PRD exists in `/products/prds/`
-2. Check context handoff file
-3. Review RequirementsAgent logs
+1. Ensure PRD exists in `products/prds/`
+2. Check context handoff file in `AgentsAssets/context-handoffs/`
+3. Review RequirementsAgent logs in `AgentsAssets/agent-logs/`
 
 ---
 

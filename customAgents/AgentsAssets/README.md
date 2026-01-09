@@ -1,6 +1,6 @@
 # AgentsAssets Directory
 
-This directory contains all the essential assets needed to run the 8-agent system for OpenTickets platform automation.
+This directory contains all the essential assets needed to run the 8-agent system for AlphaEchoCharlieOscar platform automation.
 
 ## Directory Structure
 

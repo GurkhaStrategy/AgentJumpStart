@@ -23,8 +23,8 @@
 |-------|-------|
 | **System.Title** | [Descriptive Epic Title] |
 | **System.Description** | [Detailed description with business value and context] |
-| **System.AreaPath** | OpenTickets\\[Team] |
-| **System.IterationPath** | OpenTickets |
+| **System.AreaPath** | AlphaEchoCharlieOscar\\[Team] |
+| **System.IterationPath** | AlphaEchoCharlieOscar |
 | **Microsoft.VSTS.Common.Priority** | 1 (1=High, 2=Medium, 3=Low, 4=Very Low) |
 | **Microsoft.VSTS.Common.ValueArea** | Business (or Technical) |
 | **Microsoft.VSTS.Common.BusinessValue** | [1-100] |
@@ -157,7 +157,7 @@
   {
     "op": "add",
     "path": "/fields/System.AreaPath",
-    "value": "OpenTickets"
+    "value": "AlphaEchoCharlieOscar"
   },
   {
     "op": "add",

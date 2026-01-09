@@ -190,7 +190,7 @@ test.describe('User Authentication', () => {
     await expect(page).toHaveURL(/.*login/);
 
     // When: User enters valid credentials and submits
-    await page.fill('[data-testid="email-input"]', 'test@opentickets.com');
+    await page.fill('[data-testid="email-input"]', 'test@aeco.com');
     await page.fill('[data-testid="password-input"]', 'SecurePassword123!');
     await page.click('[data-testid="submit-button"]');
 
@@ -204,7 +204,7 @@ test.describe('User Authentication', () => {
     await page.click('[data-testid="login-button"]');
 
     // When: User enters invalid credentials
-    await page.fill('[data-testid="email-input"]', 'test@opentickets.com');
+    await page.fill('[data-testid="email-input"]', 'test@aeco.com');
     await page.fill('[data-testid="password-input"]', 'WrongPassword');
     await page.click('[data-testid="submit-button"]');
 
@@ -321,8 +321,8 @@ test.describe('Accessibility', () => {
   "title": "[Test Case Title]",
   "description": "Verify that [expected behavior]",
   "fields": {
-    "System.AreaPath": "OpenTickets\\[Team]",
-    "System.IterationPath": "OpenTickets\\Sprint-2026-01",
+    "System.AreaPath": "AlphaEchoCharlieOscar\\[Team]",
+    "System.IterationPath": "AlphaEchoCharlieOscar\\Sprint-2026-01",
     "Microsoft.VSTS.Common.Priority": 1,
     "Microsoft.VSTS.TCM.AutomatedTestName": "UserAuthentication.should_allow_user_to_sign_in",
     "Microsoft.VSTS.TCM.AutomatedTestType": "Playwright",

@@ -2,7 +2,7 @@
   "azureDevOps": {
     "organization": "YOUR_ORG_NAME",
     "organizationUrl": "https://dev.azure.com/YOUR_ORG_NAME",
-    "project": "OpenTickets",
+    "project": "AlphaEchoCharlieOscar",
     "apiVersion": "7.0",
     "authentication": {
       "personalAccessToken": "YOUR_AZURE_DEVOPS_PAT",
@@ -12,7 +12,7 @@
   "teams": {
     "frontend": {
       "name": "Frontend Team",
-      "areaPath": "OpenTickets\\Frontend",
+      "areaPath": "AlphaEchoCharlieOscar\\Frontend",
       "members": [
         {
           "name": "Frontend Dev 1",
@@ -39,7 +39,7 @@
     },
     "backend": {
       "name": "Backend Team",
-      "areaPath": "OpenTickets\\Backend",
+      "areaPath": "AlphaEchoCharlieOscar\\Backend",
       "members": [
         {
           "name": "Backend Dev 1",
@@ -66,7 +66,7 @@
     },
     "infrastructure": {
       "name": "Infrastructure Team",
-      "areaPath": "OpenTickets\\Infrastructure",
+      "areaPath": "AlphaEchoCharlieOscar\\Infrastructure",
       "members": [
         {
           "name": "Infrastructure Engineer 1",
@@ -93,7 +93,7 @@
     },
     "business": {
       "name": "Business Team",
-      "areaPath": "OpenTickets\\Business",
+      "areaPath": "AlphaEchoCharlieOscar\\Business",
       "members": [
         {
           "name": "Business Analyst 1",
@@ -122,7 +122,7 @@
   "sprint": {
     "durationDays": 10,
     "namingPattern": "Sprint-{YYYY}-{NN}",
-    "iterationPathPattern": "OpenTickets\\Sprint-{YYYY}-{NN}",
+    "iterationPathPattern": "AlphaEchoCharlieOscar\\Sprint-{YYYY}-{NN}",
     "capacityUtilizationTarget": 0.8
   },
   "workItemTypes": {
@@ -200,6 +200,6 @@
   "azure": {
     "subscriptionId": "YOUR_AZURE_SUBSCRIPTION_ID",
     "tenantId": "YOUR_AZURE_TENANT_ID",
-    "resourceGroup": "rg-opentickets-prod"
+    "resourceGroup": "rg-aeco-prod"
   }
 }

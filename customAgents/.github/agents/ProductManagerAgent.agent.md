@@ -129,8 +129,8 @@ AgentsAssets/agent-logs/ProductManagerAgent.reportlogs.md (appended)
   "title": "[Descriptive Epic Title]",
   "description": "[Detailed description with business value]",
   "fields": {
-    "System.AreaPath": "OpenTickets\\[Team]",
-    "System.IterationPath": "OpenTickets",
+    "System.AreaPath": "AlphaEchoCharlieOscar\\[Team]",
+    "System.IterationPath": "AlphaEchoCharlieOscar",
     "Microsoft.VSTS.Common.Priority": 1,
     "Microsoft.VSTS.Common.ValueArea": "Business",
     "System.Tags": "product-management; [domain-tags]"
@@ -198,7 +198,7 @@ Examples:
 - Target teams for implementation
 - Priority and timeline
 
-## OpenTickets Domain Knowledge
+## AlphaEchoCharlieOscar Domain Knowledge
 
 ### Pre-loaded Context
 - Event ticketing and management workflows
@@ -239,7 +239,7 @@ See `AgentsAssets/config/ado-config.json` for Azure DevOps connection details
 2. Base decisions on data and existing product context
 3. Create measurable success criteria
 4. Consider technical feasibility during planning
-5. Align features with OpenTickets business objectives
+5. Align features with AlphaEchoCharlieOscar business objectives
 6. Document assumptions and open questions in PRD
 
 ## Version History

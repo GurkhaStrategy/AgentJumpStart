@@ -165,8 +165,8 @@ AgentsAssets/agent-logs/RequirementsGatheringAndStoryCreationAgent.reportlogs.md
   "title": "[Descriptive Story Title]",
   "description": "As a [user type], I want [goal], so that [benefit]",
   "fields": {
-    "System.AreaPath": "OpenTickets\\[Frontend|Backend|Infrastructure|Business]",
-    "System.IterationPath": "OpenTickets\\[Sprint-Name]",
+    "System.AreaPath": "AlphaEchoCharlieOscar\\[Frontend|Backend|Infrastructure|Business]",
+    "System.IterationPath": "AlphaEchoCharlieOscar\\[Sprint-Name]",
     "Microsoft.VSTS.Common.Priority": 2,
     "Microsoft.VSTS.Scheduling.StoryPoints": 5,
     "Microsoft.VSTS.Common.ValueArea": "Business",

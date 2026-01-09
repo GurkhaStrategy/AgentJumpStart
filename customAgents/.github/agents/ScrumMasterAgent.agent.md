@@ -213,7 +213,7 @@ AgentsAssets/agent-logs/ScrumMasterAgent.reportlogs.md (appended)
 ### Sprint/Iteration Creation
 ```json
 {
-  "iterationPath": "OpenTickets\\Sprint-2026-01",
+  "iterationPath": "AlphaEchoCharlieOscar\\Sprint-2026-01",
   "startDate": "2026-01-13",
   "endDate": "2026-01-24",
   "workItems": [

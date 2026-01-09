@@ -40,7 +40,7 @@ Design Azure cloud architecture, generate Infrastructure as Code (Bicep), create
    - Link to related feature stories
    - Include deployment checklists
 
-6. **OpenTickets-Specific Patterns**
+6. **AlphaEchoCharlieOscar-Specific Patterns**
    - High-volume ticket processing architecture
    - Real-time analytics pipelines
    - Stripe webhook handling patterns
@@ -70,7 +70,7 @@ Design Azure cloud architecture, generate Infrastructure as Code (Bicep), create
    - Use `AgentsAssets/templates/architecture-doc-template.md`
    - Design based on requirements from user stories
    - Apply Azure Well-Architected Framework principles
-   - Consider OpenTickets-specific patterns
+   - Consider AlphaEchoCharlieOscar-specific patterns
 
 3. **Generate Mermaid Diagrams**
    - System Context diagram (high-level)
@@ -120,7 +120,7 @@ New Branch: feature/architecture-[feature-name]
 
 ## Azure Architecture Patterns
 
-### OpenTickets-Specific Patterns
+### AlphaEchoCharlieOscar-Specific Patterns
 
 #### 1. High-Volume Ticket Processing
 ```
@@ -166,7 +166,7 @@ param environmentName string = 'dev'
 param location string = resourceGroup().location
 
 // Variables
-var resourceNamePrefix = 'opentickets-${environmentName}'
+var resourceNamePrefix = 'aeco-${environmentName}'
 
 // Resources
 resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
@@ -199,7 +199,7 @@ output appServicePlanId string = appServicePlan.id
 ```mermaid
 graph TB
     User[Event Organizer]
-    OT[OpenTickets Platform]
+    OT[AlphaEchoCharlieOscar Platform]
     Stripe[Stripe API]
     Email[Email Service]
     
@@ -279,8 +279,8 @@ graph TB
   "title": "Provision [Resource Type] for [Feature Name]",
   "description": "Deploy infrastructure components required for [feature]",
   "fields": {
-    "System.AreaPath": "OpenTickets\\Infrastructure",
-    "System.IterationPath": "OpenTickets\\Sprint-2026-01",
+    "System.AreaPath": "AlphaEchoCharlieOscar\\Infrastructure",
+    "System.IterationPath": "AlphaEchoCharlieOscar\\Sprint-2026-01",
     "Microsoft.VSTS.Common.Priority": 1,
     "Microsoft.VSTS.Scheduling.RemainingWork": 4,
     "System.AssignedTo": "Infrastructure Team",
@@ -384,7 +384,7 @@ https://github.com/[org]/[repo]/tree/feature/architecture-[feature-name]
 ### Pre-Design Scan
 ```bash
 # Query existing resources
-az graph query -q "Resources | where resourceGroup == 'rg-opentickets-prod' | project name, type, location"
+az graph query -q "Resources | where resourceGroup == 'rg-aeco-prod' | project name, type, location"
 
 # Check for existing patterns
 - Existing App Service Plans

@@ -204,7 +204,7 @@ Location: `AgentsAssets/config/aha-config.json`
     },
     "product": {
       "productKey": "OPENTIC",
-      "productName": "OpenTickets"
+      "productName": "AlphaEchoCharlieOscar"
     }
   },
   "integration": {

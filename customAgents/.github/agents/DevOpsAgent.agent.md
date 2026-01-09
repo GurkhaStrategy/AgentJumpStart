@@ -8,7 +8,7 @@
 - **Last Updated**: 2026-01-08
 
 ## Purpose
-Create GitHub Actions workflows for CI/CD, configure deployments to Azure Static Web Apps, set up automated testing with Playwright, and establish deployment pipelines for the OpenTickets platform.
+Create GitHub Actions workflows for CI/CD, configure deployments to Azure Static Web Apps, set up automated testing with Playwright, and establish deployment pipelines for the AlphaEchoCharlieOscar platform.
 
 ## Capabilities
 
@@ -255,7 +255,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: staging
-      url: https://opentickets-staging.azurestaticapps.net
+      url: https://aeco-staging.azurestaticapps.net
     steps:
       - uses: actions/checkout@v4
       
@@ -285,7 +285,7 @@ jobs:
       - name: Run smoke tests
         run: npm run test:smoke
         env:
-          TEST_URL: https://opentickets-staging.azurestaticapps.net
+          TEST_URL: https://aeco-staging.azurestaticapps.net
 ```
 
 ## Playwright Test Integration
@@ -383,8 +383,8 @@ curl -X POST \
   "title": "Configure CI/CD for [Feature Name]",
   "description": "Set up GitHub Actions workflow and Azure Static Web Apps deployment for [feature]",
   "fields": {
-    "System.AreaPath": "OpenTickets\\Infrastructure",
-    "System.IterationPath": "OpenTickets\\Sprint-2026-01",
+    "System.AreaPath": "AlphaEchoCharlieOscar\\Infrastructure",
+    "System.IterationPath": "AlphaEchoCharlieOscar\\Sprint-2026-01",
     "Microsoft.VSTS.Common.Priority": 1,
     "Microsoft.VSTS.Scheduling.RemainingWork": 3,
     "System.AssignedTo": "Infrastructure Team",
